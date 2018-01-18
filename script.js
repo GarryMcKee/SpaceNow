@@ -8,7 +8,8 @@ function fetchPeopleInSpace() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);  
-            initPeopleInSpace(response["number"]);
+            console.log(response);
+            initPeopleInSpace(response["people"]);
         }
     };
     
@@ -32,29 +33,16 @@ function fetchSpaceStationLocation() {
 }
 
 function initPeopleInSpace(peopleInSpace) {
-    var canvas = document.getElementById('astroCanvas');
-    var ctx = canvas.getContext('2d');
     var peopleInSpaceText = document.getElementById('peopleInSpaceText');
-    var astroIcon = new Image();
-    astroIcon.src = "_images/astroicon.png"
-    var width = astroIcon.width;
-    var height = astroIcon.height;
-    var x = 0;
-    var y = 0;
-
-    peopleInSpaceText.innerHTML="There are " + peopleInSpace + " people in space right now";
-    
-    canvas.width = (width * 4);
-    canvas.height = (4/2) * astroIcon.height;
-    
-    for(i = 0; i < peopleInSpace; i++) {
-        if(x + width > canvas.width) {
-            x = 0;
-            y += astroIcon.height;
-        }
-        ctx.drawImage(astroIcon, x, y);
-        x += width;
+    var peopleInSpaceTable = document.getElementById('peopleInSpaceTable');
+    var peopleInSpaceTableHtml = peopleInSpaceTable.innerHTML;
+    peopleInSpaceText.innerHTML="There are " + peopleInSpace.length + " people in space right now";
+      
+    for (i = 0; i < peopleInSpace.length; i++) {
+        peopleInSpaceTableHtml += astronautItem(peopleInSpace[i]['name'], peopleInSpace[i]['craft']);
     }
+
+    peopleInSpaceTable.innerHTML = peopleInSpaceTableHtml;
 }
 
 function initSpaceStationLocation(lat, lon) {
@@ -70,12 +58,17 @@ function initMap(latVal, lonVal) {
     var spaceStationLocation = {lat: parseFloat(latVal), lng: parseFloat(lonVal)};
     console.log(spaceStationLocation);
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
+      zoom: 1,
       center: spaceStationLocation
     });
     var marker = new google.maps.Marker({
       position: spaceStationLocation,
       map: map
     });
+  }
+
+  function astronautItem(name, craft) {
+      var html = "<tr> <td>" + name + "</td>" + "<td>" + craft + "</td> </tr>";
+      return html;
   }
 
