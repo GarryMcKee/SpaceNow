@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Space Now</title>
 </head>
 
@@ -19,24 +20,18 @@
             <h2>I.S.S Location</h2>
             <dl>
                 <dt>LAT:</dt>
-                <dd id="latvalue">4234.34</dd>
+                <dd id="latValueText">4234.34</dd>
                 <dt>LON:</dt>
-                <dd id="lonvalue">2332.32</dd>
+                <dd id="lonValueText">2332.32</dd>
             </dl>
 
-            <iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBkOAi2IqHOUxxeBlemH4R1HIY-rIuaH5A 
-    &q=Space+Needle,Seattle+WA" allowfullscreen>
-</iframe>
+            <div id="map"></div>
         </section>
 
         <section>
             <h2>People in Space</h2>
 
-            <p> There are currently 87 people in space. </p>
+            <p id="peopleInSpaceText"> There are currently 87 people in space. </p>
             <canvas id="astroCanvas">Sorry, your browser does not support this feature.</canvas>
         </section>
 
@@ -45,5 +40,9 @@
 
     </footer>
 </body>
-<script src="script.js"></script> 
+<script src="script.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkOAi2IqHOUxxeBlemH4R1HIY-rIuaH5A&callback=initMap">
+    </script>
+
 </html>
