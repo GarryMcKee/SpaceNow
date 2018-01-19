@@ -3,32 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet"> 
     <link rel="stylesheet" href="styles.css">
-    <title>Space Now</title>
+    <title>SPACE NOW</title>
 </head>
 
-<body>
-    <header role="banner">
-        <h1>Space Now</h1>
+<body class="container">
+    <header role="banner" class="row">
+        <h1 class="title">SPACE NOW</h1>
         <p>Welcome to Space Now! Below you can find the current location of the International Space Station above Earth. You
             can also see how many people are in space at this moment!</p>
     </header>
 
-    <main>
-        <section>
+    <main class="row">
+        <section class="col-md">
             <h2>I.S.S Location</h2>
-            <dl>
-                <dt>LAT:</dt>
-                <dd id="latValueText">4234.34</dd>
-                <dt>LON:</dt>
-                <dd id="lonValueText">2332.32</dd>
-            </dl>
+            <div class="media">
+                <div id="map" class="col-sm"></div>
+                <dl class ="media-body">
+                        <dt>LAT:</dt>
+                        <dd id="latValueText">4234.34</dd>
+                        <dt>LON:</dt>
+                        <dd id="lonValueText">2332.32</dd>
+                    </dl>
+            </div>
+            
 
-            <div id="map"></div>
+            
         </section>
 
-        <section>
+        <section class="col-md">
             <h2>People in Space</h2>
 
             <p id="peopleInSpaceText"> There are currently 87 people in space. </p>
@@ -45,10 +52,12 @@
     <footer>
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 <script src="script.js"></script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkOAi2IqHOUxxeBlemH4R1HIY-rIuaH5A&callback=initMap">
-    </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkOAi2IqHOUxxeBlemH4R1HIY-rIuaH5A&callback=initMap">
+</script>
 
 </html>
